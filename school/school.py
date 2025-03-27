@@ -12,6 +12,7 @@ import urllib3
 from pyquery import PyQuery as pq
 
 class Browser():
+    # 初始化操作
     def __init__(self,url):
         service = Service('chromedriver.exe')
         option = Options()
@@ -27,6 +28,7 @@ class Browser():
         self.ocr = ddddocr.DdddOcr()
         self.cookie = ''
         self.data = ''
+    # 模拟登录
     def login(self):
         username = self.driver.find_element(By.CSS_SELECTOR,'#userAccount')
         username.send_keys('输入自己的账号')
@@ -40,17 +42,20 @@ class Browser():
         for i in self.driver.get_cookies():
             self.cookie += f"{i['name']}={i['value']};"
         self.driver.save_screenshot('ok.png')
+    # 保存验证码图片
     def savecode(self):
         self.driver.save_screenshot('preCode.jpg')
         with Image.open('preCode.jpg')as img:
             area = (1124,490,1240,545)
             resimg = img.crop(area)
             resimg.save('code.jpg')
+    # 获得验证码
     def getcode(self):
         with open('code.jpg','rb')as f:
             imgdata = f.read()
         self.code = self.ocr.classification(imgdata)
         print(self.code)
+    # 获取课程信息
     def getclass(self):
         time.sleep(2)
         url = 'https://jw.gdsty.edu.cn/jsxsd/framework/main_index_loadkb.jsp'
@@ -79,6 +84,7 @@ class Browser():
                 "x-requested-with": "XMLHttpReque"
         }
         self.data = requests.post(url=url,data=data,headers=headers,verify=False).text
+    # 进行数据解析
     def savedata(self):
         doc = pq(self.data)
         parsedata = doc('#Form1')

@@ -1,7 +1,7 @@
 ### 自动获取广生态今天的课程表
 
 **如何使用**
-1. pip install -r requirements.txt 安装依赖包
+1. pip install -r requirements.txt 安装依赖包(还需要有谷歌浏览器)
 2. ![](img/img.png)
 3. 输入自己在https://jw.gdsty.edu.cn/登录的账号密码
 

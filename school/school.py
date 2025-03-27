@@ -29,7 +29,7 @@ class Browser():
         self.data = ''
     def login(self):
         username = self.driver.find_element(By.CSS_SELECTOR,'#userAccount')
-        username.send_keys('')
+        username.send_keys('输入自己的账号')
         password = self.driver.find_element(By.CSS_SELECTOR,'#userPassword')
         password.send_keys('输入自己的密码')
         code = self.driver.find_element(By.CSS_SELECTOR,'#RANDOMCODE')

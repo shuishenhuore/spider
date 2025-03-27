@@ -1,3 +1,5 @@
+### 自动获取广生态今天的课程表
+
 **如何使用**
 1. pip install -r requirements.txt 安装依赖包
 2. ![](img/img.png)
